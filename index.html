@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Happy Doctors' Day Lakshmi</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Poppins,sans-serif}
+body{
+display:flex;justify-content:center;align-items:center;height:100vh;overflow:hidden;
+background:linear-gradient(-45deg,#ffb6d5,#ffd6e8,#c8e8ff,#b6d7ff);
+background-size:400% 400%;animation:bg 12s ease infinite}
+@keyframes bg{0%{background-position:0 50%}50%{background-position:100% 50%}100%{background-position:0 50%}}
+.card{width:92%;max-width:720px;background:rgba(255,255,255,.18);backdrop-filter:blur(14px);
+padding:40px;border-radius:28px;box-shadow:0 20px 45px rgba(0,0,0,.2);text-align:center;color:#fff}
+.screen{display:none;animation:fade .7s}.active{display:block}
+@keyframes fade{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+h1{margin-bottom:15px}
+button{margin-top:25px;padding:14px 30px;border:none;border-radius:35px;background:#fff;color:#e91e63;font-weight:700;cursor:pointer}
+.gift{font-size:90px;animation:bounce 1.6s infinite}
+@keyframes bounce{50%{transform:translateY(-10px)}}
+#msg{white-space:pre-line;line-height:1.8;font-size:18px;text-align:left}
+.float{position:fixed;font-size:28px;animation:fall 7s linear forwards}
+@keyframes fall{from{transform:translateY(-50px)}to{transform:translateY(110vh)}}
+</style>
+</head>
+<body>
+<div class="card">
+<div id="s1" class="screen active">
+<h1>🌸 Hey Lakshmi! 🌸</h1>
+<p>I made a small Doctors' Day surprise just for you.</p>
+<button onclick="go(2)">Open Surprise 💙</button>
+</div>
+
+<div id="s2" class="screen">
+<div class="gift">🎁</div>
+<h2>Someone has a little surprise...</h2>
+<button onclick="go(3)">Open Gift</button>
+</div>
+
+<div id="s3" class="screen">
+<h1>🩺 Future Doctor Scan</h1>
+<p>Name : Lakshmi ✅<br>Kindness : 100% ❤️<br>Dedication : 100% 🌟<br>Smile : Beautiful 😊<br>Sleep : Needs Improvement 😂</p>
+<button onclick="go(4)">Continue</button>
+</div>
+
+<div id="s4" class="screen">
+<h1>😂 Friendly Prescription</h1>
+<p>💊 Eat on time<br>😴 Sleep well<br>☕ Don't survive only on coffee<br>📚 Keep studying<br>🌸 Keep smiling</p>
+<button onclick="go(5)">Open Letter 💌</button>
+</div>
+
+<div id="s5" class="screen">
+<h1>💙 Happy Doctors' Day 💙</h1>
+<div id="msg"></div>
+</div>
+</div>
+
+<script>
+const text=`Dear Lakshmi,
+
+Happy Doctors' Day! 🌸
+
+Your dedication, kindness and hard work are truly inspiring.
+
+One day you'll make a difference in many people's lives, and I have no doubt you'll become an amazing doctor.
+
+😂 One friendly reminder:
+Please don't forget to eat on time, sleep properly, and take care of yourself while you're busy learning to take care of others.
+
+Keep smiling.
+Keep believing in yourself.
+Keep chasing your dreams.
+
+Happy Doctors' Day once again!
+
+— Your Friend,
+Anand 💙`;
+
+let i=0;
+function go(n){
+document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+document.getElementById('s'+n).classList.add('active');
+if(n===5){type();flowers();}
+}
+function type(){
+if(i<text.length){
+document.getElementById('msg').innerHTML+=text.charAt(i);
+i++;setTimeout(type,28);
+}}
+function flowers(){
+setInterval(()=>{
+let f=document.createElement('div');
+f.className='float';
+f.innerHTML=Math.random()>0.5?'🌸':'💖';
+f.style.left=Math.random()*100+'vw';
+document.body.appendChild(f);
+setTimeout(()=>f.remove(),7000);
+},250);
+}
+</script>
+</body>
+</html>
